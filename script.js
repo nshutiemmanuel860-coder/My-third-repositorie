@@ -672,6 +672,3 @@ function closeBookingModal() {
     // --- INITIALIZE ALL MODIFICATIONS ---
     showTestimonial(0); // Show first testimonial
 });
-
-
-
