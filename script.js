@@ -672,3 +672,67 @@ function closeBookingModal() {
     // --- INITIALIZE ALL MODIFICATIONS ---
     showTestimonial(0); // Show first testimonial
 });
+// script.js improvements
+
+// 1. Fix mobile menu toggle
+document.getElementById('mobileMenuButton').addEventListener('click', function() {
+  const menu = document.getElementById('mobileMenu');
+  const icon = document.getElementById('menuIcon');
+  
+  menu.classList.toggle('hidden');
+  menu.classList.toggle('animate-slide-up');
+  
+  // Change icon based on state
+  if (menu.classList.contains('hidden')) {
+    icon.innerHTML = `<line x1="4" x2="20" y1="12" y2="12"/>
+                      <line x1="4" x2="20" y1="6" y2="6"/>
+                      <line x1="4" x2="20" y1="18" y2="18"/>`;
+  } else {
+    icon.innerHTML = `<line x1="18" x2="6" y1="6" y2="18"/>
+                      <line x1="6" x2="18" y1="6" y2="18"/>`;
+  }
+});
+
+// 2. Touch-friendly carousel
+let touchStartX = 0;
+let touchEndX = 0;
+
+document.querySelectorAll('.carousel-item').forEach(item => {
+  item.addEventListener('touchstart', e => {
+    touchStartX = e.changedTouches[0].screenX;
+  });
+  
+  item.addEventListener('touchend', e => {
+    touchEndX = e.changedTouches[0].screenX;
+    handleSwipe();
+  });
+});
+
+function handleSwipe() {
+  const threshold = 50;
+  if (touchEndX < touchStartX - threshold) {
+    // Swipe left - next
+    nextCarouselSlide();
+  }
+  if (touchEndX > touchStartX + threshold) {
+    // Swipe right - previous
+    prevCarouselSlide();
+  }
+}
+
+// 3. Optimize animations for mobile
+if ('matchMedia' in window) {
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+  
+  if (!prefersReducedMotion.matches) {
+    // Only load heavy animations if user hasn't requested reduced motion
+    import('https://unpkg.com/aos@next/dist/aos.js')
+      .then(module => {
+        module.default.init({
+          duration: 800,
+          once: true,
+          offset: 100
+        });
+      });
+  }
+}
