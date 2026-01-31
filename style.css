@@ -1,152 +1,329 @@
-   /* Custom CSS */
-        :root {
-            --color-primary: #10b981;
-            --color-primary-dark: #0d9488;
-            --gradient-primary: linear-gradient(135deg, #0f766e 0%, #10b981 50%, #34d399 100%);
-        }
-        
-        * {
-            scroll-behavior: smooth;
-        }
-        
-        body {
-            font-family: 'Inter', sans-serif;
-        }
-        
-        h1, h2, h3, h4, .brand-font {
-            font-family: 'Poppins', sans-serif;
-        }
-        
-        /* Custom scrollbar */
-        ::-webkit-scrollbar {
-            width: 10px;
-        }
-        
-        ::-webkit-scrollbar-track {
-            background: #f1f1f1;
-        }
-        
-        ::-webkit-scrollbar-thumb {
-            background: var(--color-primary);
-            border-radius: 5px;
-        }
-        
-        .dark ::-webkit-scrollbar-track {
-            background: #1f2937;
-        }
-        
-        .dark ::-webkit-scrollbar-thumb {
-            background: var(--color-primary-dark);
-        }
-        
-        /* Gradient text */
-        .gradient-text {
-            background: var(--gradient-primary);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        
-        /* Glass morphism effect */
-        .glass {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-        }
+/* Custom CSS */
+:root {
+    --color-primary: #10b981;
+    --color-primary-dark: #0d9488;
+    --gradient-primary: linear-gradient(135deg, #0f766e 0%, #10b981 50%, #34d399 100%);
+    --gradient-start: #0f766e;
+    --gradient-middle: #10b981;
+    --gradient-end: #34d399;
+}
 
-        .dark .glass {
-            background: rgba(0, 0, 0, 0.2);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-        
-        /* Floating animation for elements */
-        .floating {
-            animation: float 6s ease-in-out infinite;
-        }
-        
-        /* Staggered animation for list items */
-        .stagger-item {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.5s ease, transform 0.5s ease;
-        }
-        
-        .stagger-item.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        
-        /* Custom button styles */
-        .btn-primary {
-            background: var(--gradient-primary);
-            color: white;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 25px rgba(16, 185, 129, 0.3);
-        }
-        
-        .btn-primary::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-            transition: left 0.5s;
-        }
-        
-        .btn-primary:hover::after {
-            left: 100%;
-        }
-        
-        /* Membership card hover effect */
-        .membership-card {
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        }
-        
-        .membership-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-        }
-        
-        .dark .membership-card:hover {
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-        }
-        
-        /* Loader animation */
-        .loader {
-            border: 3px solid #f3f3f3;
-            border-top: 3px solid var(--color-primary);
-            border-radius: 50%;
-            width: 40px;
-            height: 40px;
-            animation: spin 1s linear infinite;
-        }
-        
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-        
-        /* Parallax effect */
-        .parallax {
-            background-attachment: fixed;
-            background-position: center;
-            background-repeat: no-repeat;
-            background-size: cover;
-        }
-        
-        @media (max-width: 768px) {
-            .parallax {
-                background-attachment: scroll;
-            }
+* {
+    scroll-behavior: smooth;
+}
 
-        }
+body {
+    font-family: 'Inter', sans-serif;
+}
 
+h1, h2, h3, h4, .brand-font {
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--color-primary);
+    border-radius: 5px;
+}
+
+.dark ::-webkit-scrollbar-track {
+    background: #1f2937;
+}
+
+.dark ::-webkit-scrollbar-thumb {
+    background: var(--color-primary-dark);
+}
+
+/* Gradient text */
+.gradient-text {
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* Glass morphism effect */
+.glass {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.dark .glass {
+    background: rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Floating animation for elements */
+.floating {
+    animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+/* Staggered animation for list items */
+.stagger-item {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.stagger-item.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Custom button styles */
+.btn-primary {
+    background: var(--gradient-primary);
+    color: white;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(16, 185, 129, 0.3);
+}
+
+.btn-primary::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s;
+}
+
+.btn-primary:hover::after {
+    left: 100%;
+}
+
+/* Membership card hover effect */
+.membership-card {
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.membership-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+}
+
+.dark .membership-card:hover {
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+/* Loader animation */
+.loader {
+    border: 3px solid #f3f3f3;
+    border-top: 3px solid var(--color-primary);
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Slide animations */
+@keyframes slide-up {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.animate-slide-up {
+    animation: slide-up 0.6s ease-out;
+}
+
+/* Billing Toggle Styles */
+#billingToggle:checked + label {
+    background: var(--gradient-primary);
+}
+
+#billingToggle:checked + label span {
+    transform: translateX(2rem);
+}
+
+/* Modal Styles */
+#bookingModal, #successModal {
+    animation: fadeIn 0.3s ease-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* Carousel and Testimonial Styles */
+.carousel-item {
+    display: none;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.carousel-item.active {
+    display: block;
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+.testimonial-item {
+    display: none;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.testimonial-item.active {
+    display: block;
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+.carousel-indicator.active {
+    background: white !important;
+    transform: scale(1.2);
+}
+
+/* Form Validation Styles */
+.input-error {
+    border-color: #ef4444 !important;
+    box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1);
+}
+
+.error-message {
+    animation: shake 0.5s ease-in-out;
+}
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    75% { transform: translateX(5px); }
+}
+
+/* Success Message Styles */
+.success-message {
+    background: linear-gradient(135deg, #10b981 0%, #34d399 100%);
+    color: white;
+    animation: slide-up 0.5s ease-out;
+}
+
+/* Card Hover Effects Enhancement */
+.bg-gray-50:hover, .bg-white:hover {
+    transform: translateY(-5px);
+    transition: transform 0.3s ease;
+}
+
+/* Newsletter Form Focus */
+#newsletterForm input:focus {
+    box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.1);
+}
+
+/* Smooth transitions for theme toggle */
+#themeToggle, #mobileMenuButton, .nav-link, .mobile-nav-link {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Back to Top Button Animation */
+#backToTop.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Loading Screen Fade Out */
+#loadingScreen.fade-out {
+    opacity: 0;
+    pointer-events: none;
+}
+
+/* Custom Checkbox Styles */
+input[type="checkbox"]:checked {
+    background-color: var(--color-primary);
+    border-color: var(--color-primary);
+}
+
+/* Smooth scrolling for anchor links */
+html {
+    scroll-padding-top: 80px;
+}
+
+/* Mobile Menu Animation */
+#mobileMenu {
+    animation-duration: 0.3s;
+    animation-fill-mode: both;
+}
+
+/* Price Display Transition */
+.monthly-price, .annual-price {
+    transition: opacity 0.3s ease;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .parallax {
+        background-attachment: scroll;
+    }
+    
+    #testimonialsCarousel .testimonial-control {
+        display: none;
+    }
+    
+    .floating {
+        animation: none;
+    }
+}
+
+/* Print Styles */
+@media print {
+    #backToTop,
+    #themeToggle,
+    #mobileMenuButton,
+    .btn-primary,
+    #bookingModal,
+    #successModal {
+        display: none !important;
+    }
+}
+
+/* Accessibility Focus Styles */
+:focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+}
+
+/* Custom Selection Color */
+::selection {
+    background-color: rgba(16, 185, 129, 0.3);
+    color: inherit;
+}
+
+.dark ::selection {
+    background-color: rgba(16, 185, 129, 0.5);
+}
