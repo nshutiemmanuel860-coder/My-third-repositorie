@@ -172,20 +172,27 @@ h1, h2, h3, h4, .brand-font {
     transform: translateX(2rem);
 }
 
-/* Modal Styles */
-#bookingModal, #successModal {
-    animation: fadeIn 0.3s ease-out;
+/* FIXED MODAL STYLES - CRITICAL FIX */
+/* Modal Animation Fixes */
+#bookingModal.show, #successModal.show {
+    display: flex !important;
 }
 
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-    }
-    to {
-        opacity: 1;
-    }
+#bookingModalContent, #successModalContent {
+    transition: transform 0.3s ease, opacity 0.3s ease;
 }
 
+#bookingModal.show #bookingModalContent,
+#successModal.show #successModalContent {
+    transform: scale(1);
+    opacity: 1;
+}
+
+#bookingModal:not(.show) #bookingModalContent,
+#successModal:not(.show) #successModalContent {
+    transform: scale(0.95);
+    opacity: 0;
+}
 /* Carousel and Testimonial Styles */
 .carousel-item {
     display: none;
@@ -210,6 +217,15 @@ h1, h2, h3, h4, .brand-font {
 .carousel-indicator.active {
     background: white !important;
     transform: scale(1.2);
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
 }
 
 /* Form Validation Styles */

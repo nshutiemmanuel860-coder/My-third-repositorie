@@ -496,7 +496,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
     
-    // --- BOOKING MODAL FUNCTIONALITY ---
+    // --- FIXED: BOOKING MODAL FUNCTIONALITY ---
     const bookTourBtn = document.getElementById('bookTourBtn');
     const bookingModal = document.getElementById('bookingModal');
     const closeModalBtn = document.getElementById('closeModal');
@@ -511,44 +511,75 @@ document.addEventListener('DOMContentLoaded', function() {
         tourDateInput.min = today;
     }
     
-    // Open booking modal
-    if (bookTourBtn && bookingModal) {
-        bookTourBtn.addEventListener('click', () => {
-            bookingModal.classList.remove('hidden');
-            bookingModal.classList.add('flex');
-            document.body.style.overflow = 'hidden'; // Prevent background scrolling
+   // FIXED: Open booking modal function
+   function openBookingModal() {
+    if (bookingModal) {
+        bookingModal.classList.remove('hidden');
+        bookingModal.classList.add('show');
+        document.body.style.overflow = 'hidden';
+        
+        // Trigger animation after display
+        setTimeout(() => {
+            const content = document.getElementById('bookingModalContent');
+            if (content) {
+                content.style.transform = 'scale(1)';
+                content.style.opacity = '1';
+            }
+        }, 10);
+    }
+}
+    
+    // FIXED: Close booking modal function
+    // FIXED: Close booking modal function
+function closeBookingModal() {
+    if (bookingModal) {
+        const content = document.getElementById('bookingModalContent');
+        if (content) {
+            content.style.transform = 'scale(0.95)';
+            content.style.opacity = '0';
+        }
+        
+        setTimeout(() => {
+            bookingModal.classList.remove('show');
+            bookingModal.classList.add('hidden');
+            document.body.style.overflow = 'auto';
+        }, 300);
+    }
+}
+    
+    // FIXED: Open booking modal on button click
+    if (bookTourBtn) {
+        bookTourBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            openBookingModal();
         });
     }
     
-    // Close booking modal
-    function closeBookingModal() {
-        bookingModal.classList.add('hidden');
-        bookingModal.classList.remove('flex');
-        document.body.style.overflow = 'auto';
-    }
-    
+    // FIXED: Close modal button
     if (closeModalBtn) {
         closeModalBtn.addEventListener('click', closeBookingModal);
     }
     
-    // Close modal when clicking outside
-    bookingModal?.addEventListener('click', (e) => {
-        if (e.target === bookingModal) {
-            closeBookingModal();
-        }
-    });
+    // FIXED: Close modal when clicking outside
+    if (bookingModal) {
+        bookingModal.addEventListener('click', (e) => {
+            if (e.target === bookingModal) {
+                closeBookingModal();
+            }
+        });
+    }
     
-    // Close modal with Escape key
+    // FIXED: Close modal with Escape key
     document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && !bookingModal.classList.contains('hidden')) {
+        if (e.key === 'Escape' && bookingModal && bookingModal.classList.contains('show')) {
             closeBookingModal();
         }
-        if (e.key === 'Escape' && !successModal.classList.contains('hidden')) {
+        if (e.key === 'Escape' && successModal && successModal.classList.contains('show')) {
             closeSuccessModalFunc();
         }
     });
     
-    // Handle tour booking form submission
+    // FIXED: Handle tour booking form submission
     if (tourBookingForm) {
         tourBookingForm.addEventListener('submit', function(e) {
             e.preventDefault();
@@ -564,36 +595,45 @@ document.addEventListener('DOMContentLoaded', function() {
                 return;
             }
             
-            // Show success modal
+            // FIXED: Close booking modal first
             closeBookingModal();
+            
+            // FIXED: Show success modal after a short delay
             setTimeout(() => {
-                successModal.classList.remove('hidden');
-                successModal.classList.add('flex');
-                document.body.style.overflow = 'hidden';
-                
-                // Reset form
-                tourBookingForm.reset();
+                if (successModal) {
+                    successModal.classList.add('show');
+                    document.body.style.overflow = 'hidden';
+                    
+                    // Reset form
+                    tourBookingForm.reset();
+                }
             }, 300);
         });
     }
     
-    // Close success modal
+    // FIXED: Close success modal function
     function closeSuccessModalFunc() {
-        successModal.classList.add('hidden');
-        successModal.classList.remove('flex');
-        document.body.style.overflow = 'auto';
+        if (successModal) {
+            successModal.classList.remove('show');
+            setTimeout(() => {
+                document.body.style.overflow = 'auto';
+            }, 300);
+        }
     }
     
+    // FIXED: Close success modal button
     if (closeSuccessModal) {
         closeSuccessModal.addEventListener('click', closeSuccessModalFunc);
     }
     
-    // Close success modal when clicking outside
-    successModal?.addEventListener('click', (e) => {
-        if (e.target === successModal) {
-            closeSuccessModalFunc();
-        }
-    });
+    // FIXED: Close success modal when clicking outside
+    if (successModal) {
+        successModal.addEventListener('click', (e) => {
+            if (e.target === successModal) {
+                closeSuccessModalFunc();
+            }
+        });
+    }
     
     // --- IMAGE LAZY LOADING ---
     const images = document.querySelectorAll('img[data-src]');
@@ -632,3 +672,6 @@ document.addEventListener('DOMContentLoaded', function() {
     // --- INITIALIZE ALL MODIFICATIONS ---
     showTestimonial(0); // Show first testimonial
 });
+
+
+
