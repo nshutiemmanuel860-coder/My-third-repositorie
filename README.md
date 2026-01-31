@@ -6,7 +6,7 @@
     <title>Apex Fitness & Wellness | Premium Fitness Experience</title>
     <meta name="description" content="Apex Fitness & Wellness - Transform your fitness journey with state-of-the-art facilities, expert coaching, and a supportive community. Achieve your peak performance.">
     <meta name="keywords" content="fitness, wellness, gym, personal training, yoga, nutrition, health">
-    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.tailwindcss.com"></script>    
     <script src="https://unpkg.com/lucide@latest"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -56,7 +56,7 @@
                         Home
                         <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-primary group-hover:w-full transition-all duration-300"></span>
                     </a>
-                    <a href="#about" class="nav-link font-medium text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-primary transition-colors duration-300 relative group"> 
+                    <a href="#about" class="nav-link font-medium text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-primary transition-colors duration-300 relative group">
                         About
                         <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-primary group-hover:w-full transition-all duration-300"></span>
                     </a>
@@ -642,7 +642,7 @@
                     <!-- Contact Form -->
                     <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-2xl p-8">
                         <h3 class="text-2xl font-bold mb-6 text-gray-900 dark:text-white">Send Us a Message</h3>
-                        <form id="contactForm" class="space-y-6" action="https://formsubmit.co/nshutiemmanuel860@gmail.com" method="POST">
+                        <form id="contactForm" class="space-y-6" method="POST" action="https://formsubmit.co/nickrwabuneza@gmail.com">
                             <div class="grid md:grid-cols-2 gap-6">
                                 <div>
                                     <label for="firstName" class="block text-sm font-medium mb-2 text-gray-700 dark:text-gray-300">First Name *</label>
