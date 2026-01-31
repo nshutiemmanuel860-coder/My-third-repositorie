@@ -12,6 +12,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@600;700;800;900&display=swap" rel="stylesheet">
     
+    <!-- Animation Library CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    
     <!-- Favicon -->
     <link rel="icon" href="gymlogo.png">
     <link rel="stylesheet" href="style.css">
@@ -25,12 +28,14 @@
             <p class="text-gray-600 dark:text-gray-400">Loading Apex Fitness...</p>
         </div>
     </div>
+    
     <!-- Back to Top Button -->
     <button id="backToTop" class="fixed bottom-8 right-8 bg-primary text-white p-3 rounded-full shadow-lg hover:bg-primary-dark transition-all duration-300 opacity-0 transform translate-y-10 z-40">
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <path d="m18 15-6-6-6 6"/>
         </svg>
     </button>
+    
     <!-- Header -->
     <header class="sticky top-0 z-50 shadow-lg dark:shadow-gray-800/50 bg-white/90 dark:bg-gray-900/90 backdrop-blur-md">
         <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-4">
@@ -128,6 +133,7 @@
             </div>
         </div>
     </header>
+    
     <main>
         <!-- Hero Section -->
         <section id="home" class="relative overflow-hidden pt-20 pb-32 md:pt-32 md:pb-48">
@@ -192,21 +198,29 @@
                                 <img src="gymphoto2.jpg" alt="Group fitness class" class="w-full h-96 object-cover">
                             </div>
                             <!-- Carousel Controls -->
-                            <button class="carousel-control prev absolute left-4 top-1/2 -translate-y-1/2 bg-white/20 hover:bg-white/40 p-3 rounded-full backdrop-blur-sm transition-colors duration-300">
+                            <button class="carousel-control prev absolute left-4 top-1/2 -translate-y-1/2 bg-white/20 hover:bg-white/40 p-3 rounded-full backdrop-blur-sm transition-colors duration-300"
+                                    aria-label="Previous image">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                     <path d="m15 18-6-6 6-6"/>
                                 </svg>
                             </button>
-                            <button class="carousel-control next absolute right-4 top-1/2 -translate-y-1/2 bg-white/20 hover:bg-white/40 p-3 rounded-full backdrop-blur-sm transition-colors duration-300">
+                            <button class="carousel-control next absolute right-4 top-1/2 -translate-y-1/2 bg-white/20 hover:bg-white/40 p-3 rounded-full backdrop-blur-sm transition-colors duration-300"
+                                    aria-label="Next image">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                     <path d="m9 18 6-6-6-6"/>
                                 </svg>
                             </button>
                             <!-- Carousel Indicators -->
                             <div class="absolute bottom-4 left-1/2 -translate-x-1/2 flex space-x-2">
-                                <button class="carousel-indicator w-3 h-3 rounded-full bg-white/50 hover:bg-white transition-colors duration-300"></button>
-                                <button class="carousel-indicator w-3 h-3 rounded-full bg-white/50 hover:bg-white transition-colors duration-300"></button>
-                                <button class="carousel-indicator w-3 h-3 rounded-full bg-white/50 hover:bg-white transition-colors duration-300"></button>
+                                <button class="carousel-indicator w-3 h-3 rounded-full bg-white/50 hover:bg-white transition-colors duration-300 active" 
+                                        data-index="0" 
+                                        aria-label="View hero image 1"></button>
+                                <button class="carousel-indicator w-3 h-3 rounded-full bg-white/50 hover:bg-white transition-colors duration-300" 
+                                        data-index="1" 
+                                        aria-label="View hero image 2"></button>
+                                <button class="carousel-indicator w-3 h-3 rounded-full bg-white/50 hover:bg-white transition-colors duration-300" 
+                                        data-index="2" 
+                                        aria-label="View hero image 3"></button>
                             </div>
                         </div>
                         <!-- Floating Badge -->
@@ -228,6 +242,7 @@
                 </div>
             </div>
         </section>
+        
         <!-- About Section -->
         <section id="about" class="py-20 bg-white dark:bg-gray-800">
             <div class="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -297,6 +312,7 @@
                 </div>
             </div>
         </section>
+        
         <!-- Services Section -->
         <section id="services" class="py-20 bg-gray-50 dark:bg-gray-900">
             <div class="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -437,12 +453,28 @@
                         <h3 class="text-3xl font-bold mb-4 text-gray-900 dark:text-white">Choose Your Membership</h3>
                         <p class="text-gray-600 dark:text-gray-400">Flexible plans for every fitness journey</p>
                     </div>
+                    
+                    <!-- Billing Toggle -->
+                    <div class="flex justify-center items-center mb-8">
+                        <span class="mr-4 text-gray-600 dark:text-gray-400 font-medium">Monthly</span>
+                        <div class="relative inline-block w-16 h-8">
+                            <input type="checkbox" id="billingToggle" class="sr-only" />
+                            <label for="billingToggle" class="block w-16 h-8 rounded-full bg-gray-300 dark:bg-gray-700 cursor-pointer transition-colors duration-300">
+                                <span class="absolute left-1 top-1 w-6 h-6 rounded-full bg-white dark:bg-gray-300 transition-transform duration-300 transform translate-x-0"></span>
+                            </label>
+                        </div>
+                        <span class="ml-4 text-gray-600 dark:text-gray-400 font-medium">
+                            Annual <span class="text-green-500 font-bold">(Save 20%)</span>
+                        </span>
+                    </div>
+                    
                     <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
                         <!-- Basic Plan -->
                         <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-8 border-2 border-gray-200 dark:border-gray-700 membership-card">
                             <div class="text-center mb-8">
                                 <h4 class="text-2xl font-bold mb-2 text-gray-900 dark:text-white">Basic</h4>
-                                <div class="text-5xl font-extrabold gradient-text mb-2">$49</div>
+                                <div class="text-5xl font-extrabold gradient-text mb-2 monthly-price">$49</div>
+                                <div class="text-5xl font-extrabold gradient-text mb-2 hidden annual-price">$470</div>
                                 <p class="text-gray-600 dark:text-gray-400">per month</p>
                             </div>
                             <ul class="space-y-4 mb-8">
@@ -479,7 +511,8 @@
                             </div>
                             <div class="text-center mb-8 text-white">
                                 <h4 class="text-2xl font-bold mb-2">Premium</h4>
-                                <div class="text-5xl font-extrabold mb-2">$79</div>
+                                <div class="text-5xl font-extrabold mb-2 monthly-price">$79</div>
+                                <div class="text-5xl font-extrabold mb-2 hidden annual-price">$759</div>
                                 <p class="text-white/80">per month</p>
                             </div>
                             <ul class="space-y-4 mb-8 text-white">
@@ -510,7 +543,8 @@
                         <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-8 border-2 border-primary/20 membership-card">
                             <div class="text-center mb-8">
                                 <h4 class="text-2xl font-bold mb-2 text-gray-900 dark:text-white">Ultimate</h4>
-                                <div class="text-5xl font-extrabold gradient-text mb-2">$149</div>
+                                <div class="text-5xl font-extrabold gradient-text mb-2 monthly-price">$149</div>
+                                <div class="text-5xl font-extrabold gradient-text mb-2 hidden annual-price">$1,430</div>
                                 <p class="text-gray-600 dark:text-gray-400">per month</p>
                             </div>
                             <ul class="space-y-4 mb-8">
@@ -541,6 +575,7 @@
                 </div>
             </div>
         </section>
+        
         <!-- Testimonials Section -->
         <section id="testimonials" class="py-20 bg-white dark:bg-gray-800">
             <div class="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -588,16 +623,84 @@
                             </div>
                         </div>
                     </div>
+                    
                     <div class="testimonial-item hidden">
-                        <!-- Additional testimonial items would go here -->
+                        <div class="bg-gray-50 dark:bg-gray-900 rounded-2xl p-8 shadow-lg">
+                            <div class="flex items-center mb-6">
+                                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80" 
+                                     alt="Michael Chen" 
+                                     class="w-16 h-16 rounded-full object-cover mr-4">
+                                <div>
+                                    <h4 class="font-bold text-gray-900 dark:text-white">Michael Chen</h4>
+                                    <p class="text-primary">Gained 15lbs muscle in 3 months</p>
+                                </div>
+                            </div>
+                            <p class="text-gray-600 dark:text-gray-400 italic text-lg">
+                                "The personal training at Apex Fitness is exceptional. My trainer created a customized program that fit my busy schedule and helped me achieve results I never thought possible!"
+                            </p>
+                            <div class="flex mt-4">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" class="text-yellow-400">
+                                    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+                                </svg>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" class="text-yellow-400">
+                                    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+                                </svg>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" class="text-yellow-400">
+                                    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+                                </svg>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" class="text-yellow-400">
+                                    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+                                </svg>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" class="text-yellow-400">
+                                    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+                                </svg>
+                            </div>
+                        </div>
                     </div>
+                    
+                    <div class="testimonial-item hidden">
+                        <div class="bg-gray-50 dark:bg-gray-900 rounded-2xl p-8 shadow-lg">
+                            <div class="flex items-center mb-6">
+                                <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80" 
+                                     alt="Jessica Williams" 
+                                     class="w-16 h-16 rounded-full object-cover mr-4">
+                                <div>
+                                    <h4 class="font-bold text-gray-900 dark:text-white">Jessica Williams</h4>
+                                    <p class="text-primary">Completed first marathon at 45</p>
+                                </div>
+                            </div>
+                            <p class="text-gray-600 dark:text-gray-400 italic text-lg">
+                                "The group classes and community support kept me motivated through my marathon training. The instructors are knowledgeable and the facility is always clean and well-maintained."
+                            </p>
+                            <div class="flex mt-4">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" class="text-yellow-400">
+                                    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+                                </svg>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" class="text-yellow-400">
+                                    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+                                </svg>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" class="text-yellow-400">
+                                    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+                                </svg>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" class="text-yellow-400">
+                                    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+                                </svg>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" class="text-yellow-400">
+                                    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                    
                     <!-- Testimonial Controls -->
-                    <button class="testimonial-control prev absolute left-0 top-1/2 -translate-y-1/2 -translate-x-12 bg-white dark:bg-gray-800 p-3 rounded-full shadow-lg hover:shadow-xl transition-shadow duration-300">
+                    <button class="testimonial-control prev absolute left-0 top-1/2 -translate-y-1/2 -translate-x-12 bg-white dark:bg-gray-800 p-3 rounded-full shadow-lg hover:shadow-xl transition-shadow duration-300"
+                            aria-label="Previous testimonial">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <path d="m15 18-6-6 6-6"/>
                         </svg>
                     </button>
-                    <button class="testimonial-control next absolute right-0 top-1/2 -translate-y-1/2 translate-x-12 bg-white dark:bg-gray-800 p-3 rounded-full shadow-lg hover:shadow-xl transition-shadow duration-300">
+                    <button class="testimonial-control next absolute right-0 top-1/2 -translate-y-1/2 translate-x-12 bg-white dark:bg-gray-800 p-3 rounded-full shadow-lg hover:shadow-xl transition-shadow duration-300"
+                            aria-label="Next testimonial">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <path d="m9 18 6-6-6-6"/>
                         </svg>
@@ -626,6 +729,7 @@
                 </div>
             </div>
         </section>
+        
         <!-- Contact Section -->
         <section id="contact" class="py-20 bg-gradient-to-b from-gray-50 to-white dark:from-gray-900 dark:to-gray-800">
             <div class="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -767,6 +871,7 @@
                 </div>
             </div>
         </section>
+        
         <!-- CTA Section -->
         <section class="py-20 bg-gradient-to-r from-gradient-start via-gradient-middle to-gradient-end">
             <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
@@ -777,16 +882,17 @@
                     Join thousands of members who have achieved their fitness goals with Apex Fitness
                 </p>
                 <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                    <a href="#membership" class="bg-white text-primary px-8 py-4 rounded-full font-bold text-lg shadow-2xl hover:shadow-3xl hover:scale-105 transition-all duration-300">
+                    <button id="bookTourBtn" class="bg-white text-primary px-8 py-4 rounded-full font-bold text-lg shadow-2xl hover:shadow-3xl hover:scale-105 transition-all duration-300">
+                        Book a Free Tour
+                    </button>
+                    <a href="#membership" class="bg-transparent border-2 border-white text-white px-8 py-4 rounded-full font-bold text-lg hover:bg-white/10 transition-all duration-300">
                         Start Free 7-Day Trial
-                    </a>
-                    <a href="#contact" class="bg-transparent border-2 border-white text-white px-8 py-4 rounded-full font-bold text-lg hover:bg-white/10 transition-all duration-300">
-                        Book a Tour
                     </a>
                 </div>
             </div>
         </section>
     </main>
+    
     <!-- Footer -->
     <footer class="bg-gray-900 dark:bg-gray-950 text-gray-400 py-12">
         <div class="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -872,6 +978,81 @@
             </div>
         </div>
     </footer>
+    
+    <!-- Booking Modal -->
+    <div id="bookingModal" class="fixed inset-0 bg-black/50 z-[9999] hidden items-center justify-center p-4">
+        <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-2xl max-w-md w-full max-h-[90vh] overflow-y-auto">
+            <div class="p-6">
+                <div class="flex justify-between items-center mb-6">
+                    <h3 class="text-2xl font-bold text-gray-900 dark:text-white">Book Your Free Tour</h3>
+                    <button id="closeModal" class="text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="18" y1="6" x2="6" y2="18"/>
+                            <line x1="6" y1="6" x2="18" y2="18"/>
+                        </svg>
+                    </button>
+                </div>
+                
+                <form id="tourBookingForm" class="space-y-4">
+                    <div>
+                        <label class="block text-sm font-medium mb-2 text-gray-700 dark:text-gray-300">Preferred Date *</label>
+                        <input type="date" id="tourDate" required 
+                               class="w-full px-4 py-3 rounded-xl border border-gray-300 dark:border-gray-700 bg-gray-50 dark:bg-gray-900 focus:ring-2 focus:ring-primary focus:border-transparent transition duration-300">
+                    </div>
+                    
+                    <div>
+                        <label class="block text-sm font-medium mb-2 text-gray-700 dark:text-gray-300">Preferred Time *</label>
+                        <select id="tourTime" required 
+                                class="w-full px-4 py-3 rounded-xl border border-gray-300 dark:border-gray-700 bg-gray-50 dark:bg-gray-900 focus:ring-2 focus:ring-primary focus:border-transparent transition duration-300">
+                            <option value="">Select a time</option>
+                            <option value="9:00 AM">9:00 AM</option>
+                            <option value="11:00 AM">11:00 AM</option>
+                            <option value="2:00 PM">2:00 PM</option>
+                            <option value="4:00 PM">4:00 PM</option>
+                            <option value="6:00 PM">6:00 PM</option>
+                        </select>
+                    </div>
+                    
+                    <div>
+                        <label class="block text-sm font-medium mb-2 text-gray-700 dark:text-gray-300">Number of Guests</label>
+                        <input type="number" id="guests" min="1" max="5" value="1" 
+                               class="w-full px-4 py-3 rounded-xl border border-gray-300 dark:border-gray-700 bg-gray-50 dark:bg-gray-900 focus:ring-2 focus:ring-primary focus:border-transparent transition duration-300">
+                    </div>
+                    
+                    <div>
+                        <label class="block text-sm font-medium mb-2 text-gray-700 dark:text-gray-300">Special Requests</label>
+                        <textarea id="specialRequests" rows="3" 
+                                  class="w-full px-4 py-3 rounded-xl border border-gray-300 dark:border-gray-700 bg-gray-50 dark:bg-gray-900 focus:ring-2 focus:ring-primary focus:border-transparent transition duration-300"
+                                  placeholder="Any specific areas you'd like to see..."></textarea>
+                    </div>
+                    
+                    <button type="submit" class="w-full btn-primary py-3 rounded-xl font-bold">
+                        Book Tour
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Success Modal -->
+    <div id="successModal" class="fixed inset-0 bg-black/50 z-[9999] hidden items-center justify-center p-4">
+        <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-2xl max-w-md w-full p-8 text-center">
+            <div class="w-20 h-20 bg-green-100 dark:bg-green-900 rounded-full flex items-center justify-center mx-auto mb-6">
+                <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-green-600 dark:text-green-400">
+                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                    <path d="m9 11 3 3L22 4"/>
+                </svg>
+            </div>
+            <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">Tour Booked Successfully!</h3>
+            <p class="text-gray-600 dark:text-gray-400 mb-6">
+                We've received your tour request. Our team will contact you within 24 hours to confirm your appointment.
+            </p>
+            <button id="closeSuccessModal" class="btn-primary px-8 py-3 rounded-xl font-bold">
+                Close
+            </button>
+        </div>
+    </div>
+    
     <script src="script.js"></script>
 </body>
 </html>
