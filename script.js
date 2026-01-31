@@ -736,3 +736,9 @@ if ('matchMedia' in window) {
       });
   }
 }
+  if (window.innerWidth > 768) {
+    const link = document.createElement('link');
+    link.rel = 'stylesheet';
+    link.href = 'https://unpkg.com/aos@next/dist/aos.css';
+    document.head.appendChild(link);
+  }
