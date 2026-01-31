@@ -667,7 +667,7 @@
                             
                             <div>
                                 <label for="phone" class="block text-sm font-medium mb-2 text-gray-700 dark:text-gray-300">Phone Number</label>
-                                <input type="tel" id="phone" name="phone" 
+                                <input type="tel" id="phone" name="phone" required
                                        class="w-full px-4 py-3 rounded-xl border border-gray-300 dark:border-gray-700 bg-gray-50 dark:bg-gray-900 focus:ring-2 focus:ring-primary focus:border-transparent transition duration-300">
                             </div>
                             
