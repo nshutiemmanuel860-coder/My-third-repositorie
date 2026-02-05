@@ -2,7 +2,15 @@
 <html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Add to head -->
+    <meta name="theme-color" content="#3b82f6">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- Add these to your existing head section -->
+    <meta name="format-detection" content="telephone=no">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-title" content="Apex Fitness">
     <title>Apex Fitness & Wellness | Premium Fitness Experience</title>
     <meta name="description" content="Apex Fitness & Wellness - Transform your fitness journey with state-of-the-art facilities, expert coaching, and a supportive community. Achieve your peak performance.">
     <meta name="keywords" content="fitness, wellness, gym, personal training, yoga, nutrition, health">
@@ -25,7 +33,7 @@
     <div id="loadingScreen" class="fixed inset-0 bg-white dark:bg-gray-900 z-[9999] flex items-center justify-center transition-opacity duration-500">
         <div class="text-center">
             <div class="loader mb-4"></div>
-            <p class="text-gray-600 dark:text-gray-400">Loading Apex Fitness...</p>
+            <p class="text-gray-600 dark:text-gray-400" style="align-items: center;">Loading Apex Fitness...</p>
         </div>
     </div>
     
@@ -132,8 +140,7 @@
                 </div>
             </div>
         </div>
-    </header>
-    
+    </header>   
     <main>
         <!-- Hero Section -->
         <section id="home" class="relative overflow-hidden pt-20 pb-32 md:pt-32 md:pb-48">
@@ -593,11 +600,11 @@
                     <div class="testimonial-item active">
                         <div class="bg-gray-50 dark:bg-gray-900 rounded-2xl p-8 shadow-lg">
                             <div class="flex items-center mb-6">
-                                <img src="https://images.unsplash.com/photo-1494790108755-2616b612b786?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80" 
-                                     alt="Sarah Johnson" 
+                                <img src="Nshuti8.png.jpg" 
+                                     alt="NSHUTI Emmy" 
                                      class="w-16 h-16 rounded-full object-cover mr-4">
                                 <div>
-                                    <h4 class="font-bold text-gray-900 dark:text-white">Sarah Johnson</h4>
+                                    <h4 class="font-bold text-gray-900 dark:text-white">NSHUTI Emmy</h4>
                                     <p class="text-primary">Lost 30lbs in 4 months</p>
                                 </div>
                             </div>
@@ -627,11 +634,11 @@
                     <div class="testimonial-item hidden">
                         <div class="bg-gray-50 dark:bg-gray-900 rounded-2xl p-8 shadow-lg">
                             <div class="flex items-center mb-6">
-                                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80" 
-                                     alt="Michael Chen" 
+                                <img src="https://scontent.cdninstagram.com/v/t51.82787-15/601835729_17846651436620981_5965683475240770187_n.webp?stp=dst-jpg_e35_tt6&_nc_cat=109&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0FST1VTRUxfQ09OVEFJTkVSLmJlc3RfaW1hZ2VfdXJsZ2VuLkMzIn0%3D&_nc_ohc=qkXc75yzPCEQ7kNvwGAtamk&_nc_oc=Adna_mD2yScynXf1Mumb-JNtiCmIOIbDKrd3XUwFBHsS2PEItJ0IqrsT6DGU8Z2-1pM&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=scontent.cdninstagram.com&_nc_gid=oRGyTMhDA2nlecgdZrYkOQ&oh=00_AftYeZJp_CbfJz9qKR3kBgEnsw5Y0lSuUQVIQaI-SItbvw&oe=6983A4B5" 
+                                     alt="Niyonzima owen" 
                                      class="w-16 h-16 rounded-full object-cover mr-4">
                                 <div>
-                                    <h4 class="font-bold text-gray-900 dark:text-white">Michael Chen</h4>
+                                    <h4 class="font-bold text-gray-900 dark:text-white">Niyonzima owen</h4>
                                     <p class="text-primary">Gained 15lbs muscle in 3 months</p>
                                 </div>
                             </div>
@@ -661,11 +668,11 @@
                     <div class="testimonial-item hidden">
                         <div class="bg-gray-50 dark:bg-gray-900 rounded-2xl p-8 shadow-lg">
                             <div class="flex items-center mb-6">
-                                <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80" 
-                                     alt="Jessica Williams" 
+                                <img src="fils pic.jpg" 
+                                     alt="Muragijimana Fils" 
                                      class="w-16 h-16 rounded-full object-cover mr-4">
                                 <div>
-                                    <h4 class="font-bold text-gray-900 dark:text-white">Jessica Williams</h4>
+                                    <h4 class="font-bold text-gray-900 dark:text-white">Muragijimana Fils</h4>
                                     <p class="text-primary">Completed first marathon at 45</p>
                                 </div>
                             </div>
@@ -914,21 +921,23 @@
                         Elevating fitness standards since 2013. Join us in the journey to peak health and wellness.
                     </p>
                     <div class="flex space-x-4">
-                        <a href="#" aria-label="Facebook" class="text-gray-400 hover:text-primary transition-colors duration-300">
+                        <a href="https://www.linkedin.com/feed/" target="_blank" title="Linkedin" aria-label="Linkedin" class="text-gray-400 hover:text-primary transition-colors duration-300">
                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+                                 <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+                                    <rect x="2" y="9" width="4" height="12"/>
+                                    <circle cx="4" cy="4" r="2"/>
                             </svg>
                         </a>
-                        <a href="#" aria-label="Instagram" class="text-gray-400 hover:text-primary transition-colors duration-300">
+                        <a href="https://www.instagram.com/nshuti__wagakira/" target="_blank" title="Instagram" aria-label="Instagram" class="text-gray-400 hover:text-primary transition-colors duration-300">
                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                 <rect width="20" height="20" x="2" y="2" rx="5" ry="5"/>
                                 <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
                                 <line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/>
                             </svg>
                         </a>
-                        <a href="#" aria-label="Twitter" class="text-gray-400 hover:text-primary transition-colors duration-300">
+                        <a href="https://x.com/EmmanuelNs16932" target="_blank" title="Twitter" aria-label="Twitter" class="text-gray-400 hover:text-primary transition-colors duration-300">
                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.6-14 11.4 2.8.2 5.6-.6 7.8-2.6.2.2.3.2 0 0 .1.2.2.3.4.4.6.4 1.2.6 1.8.6.6.1 1.2.1 1.8 0 1.2-.1 2.3-.4 3.4-1.2l-1.4-.4c-.6.3-1.3.5-2 .5-1.4 0-2.7-.4-3.8-1.2-1.2-.8-1.9-2.1-2-3.4-.6 0-1.2-.1-1.8-.3-.6-.2-1.1-.5-1.6-.9.6.1 1.2.2 1.8.2.6 0 1.2-.1 1.8-.3 1.2-.4 2.3-.9 3.4-1.8 1-.8 1.8-1.9 2.4-3.1 0 0 0 0 0 0C19.8 6.4 21.3 4.9 22 4z"/>
+                                <path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L7.864 3.24H5.734Z"/>
                             </svg>
                         </a>
                     </div>
@@ -959,8 +968,8 @@
                 <div>
                     <h4 class="text-lg font-bold text-white mb-4">Stay Updated</h4>
                     <p class="text-sm mb-4">Subscribe for fitness tips and exclusive offers</p>
-                    <form id="newsletterForm" class="space-y-2">
-                        <input type="email" placeholder="Your email" 
+                    <form id="newsletterForm" class="space-y-2" action="https://formsubmit.co/nshutiemmanuel860@gmail.com" method="POST">
+                        <input type="email" placeholder="Your email" required
                                class="w-full px-4 py-2 rounded-lg bg-gray-800 border border-gray-700 focus:border-primary focus:ring-primary transition duration-300">
                         <button type="submit" class="w-full bg-primary text-white py-2 rounded-lg font-semibold hover:bg-primary-dark transition-colors duration-300">
                             Subscribe
@@ -979,13 +988,13 @@
         </div>
     </footer>
     
-    <!-- Booking Modal -->
-    <div id="bookingModal" class="fixed inset-0 bg-black/50 z-[9999] hidden items-center justify-center p-4">
-        <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-2xl max-w-md w-full max-h-[90vh] overflow-y-auto">
+    <!-- Booking Modal - FIXED VERSION -->
+    <div id="bookingModal" class="fixed inset-0 bg-black/50 z-[99999] hidden flex items-center justify-center p-4">
+        <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-2xl max-w-md w-full max-h-[90vh] overflow-y-auto transform transition-all duration-300 scale-95 opacity-0" id="bookingModalContent">
             <div class="p-6">
                 <div class="flex justify-between items-center mb-6">
                     <h3 class="text-2xl font-bold text-gray-900 dark:text-white">Book Your Free Tour</h3>
-                    <button id="closeModal" class="text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200">
+                    <button id="closeModal" class="text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 transition-colors duration-300">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <line x1="18" y1="6" x2="6" y2="18"/>
                             <line x1="6" y1="6" x2="18" y2="18"/>
@@ -1015,13 +1024,13 @@
                     
                     <div>
                         <label class="block text-sm font-medium mb-2 text-gray-700 dark:text-gray-300">Number of Guests</label>
-                        <input type="number" id="guests" min="1" max="5" value="1" 
+                        <input type="number" id="guests" min="1" max="5" value="1" required
                                class="w-full px-4 py-3 rounded-xl border border-gray-300 dark:border-gray-700 bg-gray-50 dark:bg-gray-900 focus:ring-2 focus:ring-primary focus:border-transparent transition duration-300">
                     </div>
                     
                     <div>
                         <label class="block text-sm font-medium mb-2 text-gray-700 dark:text-gray-300">Special Requests</label>
-                        <textarea id="specialRequests" rows="3" 
+                        <textarea id="specialRequests" rows="3" required
                                   class="w-full px-4 py-3 rounded-xl border border-gray-300 dark:border-gray-700 bg-gray-50 dark:bg-gray-900 focus:ring-2 focus:ring-primary focus:border-transparent transition duration-300"
                                   placeholder="Any specific areas you'd like to see..."></textarea>
                     </div>
@@ -1034,9 +1043,9 @@
         </div>
     </div>
     
-    <!-- Success Modal -->
-    <div id="successModal" class="fixed inset-0 bg-black/50 z-[9999] hidden items-center justify-center p-4">
-        <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-2xl max-w-md w-full p-8 text-center">
+    <!-- Success Modal - FIXED VERSION -->
+    <div id="successModal" class="fixed inset-0 bg-black/50 z-[99999] hidden flex items-center justify-center p-4">
+        <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-2xl max-w-md w-full p-8 text-center transform transition-all duration-300 scale-95 opacity-0" id="successModalContent">
             <div class="w-20 h-20 bg-green-100 dark:bg-green-900 rounded-full flex items-center justify-center mx-auto mb-6">
                 <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-green-600 dark:text-green-400">
                     <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
