@@ -742,3 +742,414 @@ if ('matchMedia' in window) {
     link.href = 'https://unpkg.com/aos@next/dist/aos.css';
     document.head.appendChild(link);
   }
+
+  // ============================================
+// MOBILE-SPECIFIC FUNCTIONALITY
+// ============================================
+
+// 1. Viewport meta tag adjustment for mobile
+function adjustViewport() {
+  const viewport = document.querySelector('meta[name="viewport"]');
+  if (window.innerWidth <= 768) {
+    viewport.setAttribute('content', 'width=device-width, initial-scale=1, maximum-scale=5');
+  } else {
+    viewport.setAttribute('content', 'width=device-width, initial-scale=1');
+  }
+}
+
+// 2. Touch-friendly carousel swiping
+function initializeTouchCarousel() {
+  const heroCarousel = document.getElementById('heroCarousel');
+  let touchStartX = 0;
+  let touchEndX = 0;
+  const swipeThreshold = 50;
+
+  if (!heroCarousel) return;
+
+  heroCarousel.addEventListener('touchstart', (e) => {
+    touchStartX = e.changedTouches[0].screenX;
+  }, { passive: true });
+
+  heroCarousel.addEventListener('touchend', (e) => {
+    touchEndX = e.changedTouches[0].screenX;
+    handleCarouselSwipe();
+  }, { passive: true });
+
+  function handleCarouselSwipe() {
+    const diff = touchStartX - touchEndX;
+    
+    if (Math.abs(diff) > swipeThreshold) {
+      if (diff > 0) {
+        // Swipe left - next slide
+        nextHeroSlide();
+      } else {
+        // Swipe right - previous slide
+        prevHeroSlide();
+      }
+      resetHeroInterval();
+    }
+  }
+}
+
+// 3. Mobile menu improvements
+function enhanceMobileMenu() {
+  const mobileMenu = document.getElementById('mobileMenu');
+  const mobileMenuButton = document.getElementById('mobileMenuButton');
+  
+  if (!mobileMenu || !mobileMenuButton) return;
+  
+  // Close menu when clicking outside
+  document.addEventListener('click', (e) => {
+    if (!mobileMenu.classList.contains('hidden') && 
+        !mobileMenu.contains(e.target) && 
+        !mobileMenuButton.contains(e.target)) {
+      mobileMenu.classList.add('hidden');
+      updateMenuIcon(false);
+    }
+  });
+  
+  // Close menu on escape key
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && !mobileMenu.classList.contains('hidden')) {
+      mobileMenu.classList.add('hidden');
+      updateMenuIcon(false);
+    }
+  });
+  
+  // Prevent body scroll when menu is open
+  mobileMenuButton.addEventListener('click', () => {
+    if (mobileMenu.classList.contains('hidden')) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+  });
+  
+  // Close menu on link click
+  document.querySelectorAll('.mobile-nav-link').forEach(link => {
+    link.addEventListener('click', () => {
+      mobileMenu.classList.add('hidden');
+      document.body.style.overflow = '';
+      updateMenuIcon(false);
+    });
+  });
+}
+
+function updateMenuIcon(isOpen) {
+  const menuIcon = document.getElementById('menuIcon');
+  if (!menuIcon) return;
+  
+  if (isOpen) {
+    menuIcon.innerHTML = `<line x1="18" x2="6" y1="6" y2="18"/>
+                         <line x1="6" x2="18" y1="6" y2="18"/>`;
+  } else {
+    menuIcon.innerHTML = `<line x1="4" x2="20" y1="12" y2="12"/>
+                         <line x1="4" x2="20" y1="6" y2="6"/>
+                         <line x1="4" x2="20" y1="18" y2="18"/>`;
+  }
+}
+
+// 4. Optimize animations for mobile
+function optimizeAnimations() {
+  if ('matchMedia' in window) {
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+    
+    if (prefersReducedMotion.matches) {
+      // Disable all non-essential animations
+      document.querySelectorAll('*').forEach(el => {
+        el.style.animationPlayState = 'paused';
+      });
+    }
+  }
+  
+  // Disable heavy animations on mobile
+  if (window.innerWidth < 768) {
+    const floatingElements = document.querySelectorAll('.floating');
+    floatingElements.forEach(el => {
+      el.style.animation = 'none';
+    });
+  }
+}
+
+// 5. Lazy load images for mobile
+function initializeLazyLoading() {
+  if ('IntersectionObserver' in window) {
+    const imageObserver = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const img = entry.target;
+          const src = img.getAttribute('data-src');
+          
+          if (src) {
+            img.src = src;
+            img.removeAttribute('data-src');
+            img.classList.add('loaded');
+          }
+          
+          observer.unobserve(img);
+        }
+      });
+    }, {
+      rootMargin: '50px 0px',
+      threshold: 0.1
+    });
+    
+    document.querySelectorAll('img[data-src]').forEach(img => {
+      imageObserver.observe(img);
+    });
+  } else {
+    // Fallback for browsers without IntersectionObserver
+    document.querySelectorAll('img[data-src]').forEach(img => {
+      img.src = img.getAttribute('data-src');
+    });
+  }
+}
+
+// 6. Mobile form validation enhancements
+function enhanceFormValidation() {
+  const forms = document.querySelectorAll('form');
+  
+  forms.forEach(form => {
+    form.addEventListener('submit', function(e) {
+      const inputs = this.querySelectorAll('input[required], textarea[required], select[required]');
+      let isValid = true;
+      
+      inputs.forEach(input => {
+        if (!input.value.trim()) {
+          isValid = false;
+          showInputError(input, 'This field is required');
+        } else {
+          clearInputError(input);
+        }
+        
+        // Email validation
+        if (input.type === 'email' && input.value.trim()) {
+          const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+          if (!emailRegex.test(input.value.trim())) {
+            isValid = false;
+            showInputError(input, 'Please enter a valid email address');
+          }
+        }
+      });
+      
+      if (!isValid) {
+        e.preventDefault();
+        // Scroll to first error
+        const firstError = this.querySelector('.error-message');
+        if (firstError) {
+          firstError.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+      }
+    });
+  });
+  
+  function showInputError(input, message) {
+    const errorId = `error-${input.id || input.name}`;
+    let errorElement = document.getElementById(errorId);
+    
+    if (!errorElement) {
+      errorElement = document.createElement('div');
+      errorElement.id = errorId;
+      errorElement.className = 'error-message text-red-500 text-sm mt-1';
+      input.parentNode.appendChild(errorElement);
+    }
+    
+    errorElement.textContent = message;
+    input.classList.add('border-red-500');
+  }
+  
+  function clearInputError(input) {
+    const errorId = `error-${input.id || input.name}`;
+    const errorElement = document.getElementById(errorId);
+    
+    if (errorElement) {
+      errorElement.remove();
+    }
+    
+    input.classList.remove('border-red-500');
+  }
+}
+
+// 7. Mobile device detection and adjustments
+function detectMobileFeatures() {
+  // Check if device has touch capability
+  const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+  
+  if (isTouchDevice) {
+    document.body.classList.add('touch-device');
+    
+    // Add touch-specific styles
+    const style = document.createElement('style');
+    style.textContent = `
+      .touch-device .nav-link:hover span,
+      .touch-device .membership-card:hover {
+        transform: none !important;
+      }
+      
+      .touch-device button:active {
+        transform: scale(0.98) !important;
+      }
+    `;
+    document.head.appendChild(style);
+  }
+  
+  // Check for iOS
+  const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+  if (isIOS) {
+    document.body.classList.add('ios-device');
+    
+    // Fix for iOS viewport height
+    function setVh() {
+      const vh = window.innerHeight * 0.01;
+      document.documentElement.style.setProperty('--vh', `${vh}px`);
+    }
+    
+    setVh();
+    window.addEventListener('resize', setVh);
+  }
+}
+
+// 8. Performance optimization for mobile
+function optimizePerformance() {
+  // Debounce scroll events
+  let scrollTimeout;
+  window.addEventListener('scroll', () => {
+    clearTimeout(scrollTimeout);
+    scrollTimeout = setTimeout(() => {
+      // Update active nav only after scrolling stops
+      updateActiveNavLink();
+    }, 100);
+  });
+  
+  // Throttle resize events
+  let resizeTimeout;
+  window.addEventListener('resize', () => {
+    clearTimeout(resizeTimeout);
+    resizeTimeout = setTimeout(() => {
+      adjustViewport();
+      optimizeAnimations();
+    }, 250);
+  });
+}
+
+// 9. Mobile-friendly modals
+function enhanceMobileModals() {
+  const modals = document.querySelectorAll('#bookingModal, #successModal');
+  
+  modals.forEach(modal => {
+    // Prevent background scroll when modal is open
+    modal.addEventListener('shown', () => {
+      document.body.style.overflow = 'hidden';
+    });
+    
+    modal.addEventListener('hidden', () => {
+      document.body.style.overflow = '';
+    });
+    
+    // Close on tap outside for mobile
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) {
+        const closeBtn = modal.querySelector('[data-dismiss="modal"], .close-modal');
+        if (closeBtn) closeBtn.click();
+      }
+    });
+  });
+}
+
+// 10. Initialize all mobile enhancements
+function initializeMobileEnhancements() {
+  // Run on DOM ready
+  document.addEventListener('DOMContentLoaded', () => {
+    // Wait a bit for everything to load
+    setTimeout(() => {
+      adjustViewport();
+      initializeTouchCarousel();
+      enhanceMobileMenu();
+      optimizeAnimations();
+      initializeLazyLoading();
+      enhanceFormValidation();
+      detectMobileFeatures();
+      optimizePerformance();
+      enhanceMobileModals();
+      
+      // Add mobile-specific event listeners
+      addMobileEventListeners();
+    }, 100);
+  });
+  
+  // Run on window load
+  window.addEventListener('load', () => {
+    // Final optimizations after everything loads
+    if (window.innerWidth < 768) {
+      // Hide loading screen faster on mobile
+      const loadingScreen = document.getElementById('loadingScreen');
+      if (loadingScreen) {
+        loadingScreen.style.transitionDuration = '300ms';
+      }
+    }
+  });
+}
+
+// 11. Additional mobile event listeners
+function addMobileEventListeners() {
+  // Handle orientation change
+  window.addEventListener('orientationchange', () => {
+    setTimeout(() => {
+      adjustViewport();
+      // Force redraw for certain elements
+      document.querySelectorAll('.carousel-item.active').forEach(item => {
+        item.style.display = 'none';
+        item.offsetHeight; // Trigger reflow
+        item.style.display = 'block';
+      });
+    }, 300);
+  });
+  
+  // Handle virtual keyboard appearance
+  const inputs = document.querySelectorAll('input, textarea');
+  inputs.forEach(input => {
+    input.addEventListener('focus', () => {
+      if (window.innerWidth < 768) {
+        // Scroll input into view when keyboard appears
+        setTimeout(() => {
+          input.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }, 300);
+      }
+    });
+  });
+}
+
+// ============================================
+// MOBILE-SPECIFIC UTILITY FUNCTIONS
+// ============================================
+
+// Check if device is mobile
+function isMobileDevice() {
+  return window.innerWidth <= 768 || 
+         /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+}
+
+// Check connection speed for mobile
+function checkConnectionSpeed() {
+  if (navigator.connection) {
+    const connection = navigator.connection;
+    const speed = connection.effectiveType;
+    
+    if (speed === 'slow-2g' || speed === '2g') {
+      // Disable animations and heavy images for slow connections
+      document.querySelectorAll('.bg-animated, .parallax').forEach(el => {
+        el.style.display = 'none';
+      });
+    }
+  }
+}
+
+// Initialize everything
+initializeMobileEnhancements();
+
+// Export functions if needed
+window.mobileUtils = {
+  isMobileDevice,
+  checkConnectionSpeed,
+  adjustViewport
+};
